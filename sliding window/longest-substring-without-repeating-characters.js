@@ -1,0 +1,55 @@
+// Longest Substring Without Repeating Characters
+// Medium
+// Topics
+// Company Tags
+// Hints
+// Given a string s, find the length of the longest substring without duplicate characters.
+
+// A substring is a contiguous sequence of characters within a string.
+
+// Example 1:
+
+// Input: s = "zxyzxyz"
+
+// Output: 3
+// Explanation: The string "xyz" is the longest without duplicate characters.
+
+// Example 2:
+
+// Input: s = "xxxx"
+
+// Output: 1
+// Constraints:
+
+// 0 <= s.length <= 1000
+// s may consist of printable ASCII characters.
+
+class Solution {
+    lengthOfLongestSubstring(s) {
+        // Set to track characters currently in window
+        let set = new Set();
+        
+        let left = 0;          // left pointer
+        let maxLength = 0;     // track longest valid substring
+        
+        for (let right = 0; right < s.length; right++) {
+            
+            // If character already exists, shrink window
+            while (set.has(s[right])) {
+                // Remove left character from set
+                set.delete(s[left]);
+                
+                // Move left pointer forward
+                left++;
+            }
+            
+            // Add current character to set
+            set.add(s[right]);
+            
+            // Update max length
+            maxLength = Math.max(maxLength, right - left + 1);
+        }
+        
+        return maxLength;
+    }
+}
