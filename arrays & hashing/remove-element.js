@@ -44,7 +44,7 @@ class Solution {
     let k = 0;
 
     // loop throught the arr
-    for (let i = 0; i > nums.length; i++){
+    for (let i = 0; i < nums.length; i++){
     //check for elems !== val
     if(nums[i] !== val){
 
